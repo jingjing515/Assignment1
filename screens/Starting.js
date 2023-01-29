@@ -1,21 +1,40 @@
-import { View, Text, TextInput, Button, Modal, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Modal,
+  StyleSheet,
+  Keyboard,
+} from "react-native";
 import { useState } from "react";
-//import Input from "../components/Input";
+import Card from "../components/Card";
+import Input from "../components/Input";
 
 // Receive modalVisible in props
-export default function Input({
+export default function Starting({
   sendChangedEmail,
   sendChangedPhone,
   modalIsVisible,
-  cancelPressed,
 }) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
   function changeEmail(changedEmail) {
     setEmail(changedEmail);
   }
   function changePhone(changedPhone) {
     setPhone(changedPhone);
+  }
+  function resetInput() {
+    setEmail("");
+    setPhone("");
+  }
+
+  function phoneInvalid(phone) {
+    if (phone.length != 10) {
+      alert("Please enter a valid phone number");
+    }
   }
   /*function onEmailEntered(changedEmail) {
     setEnteredEmail(changedEmail);
@@ -43,6 +62,8 @@ export default function Input({
           value={phone}
           onChangeText={(phone) => setPhone(phone)}
           style={styles.input}
+          maxLength={10}
+          keyboardType="numeric"
         />
 
         <View style={styles.buttonContainer}>
@@ -50,15 +71,21 @@ export default function Input({
             <Button
               title="Sign up"
               onPress={() => {
-                sendChangedEmail(email);
-                sendChangedPhone(phone);
-                setText("");
+                phoneInvalid(phone);
+                //sendChangedEmail(email);
+                //sendChangedPhone(phone);
               }}
             />
           </View>
 
           <View style={styles.button}>
-            <Button title="Reset" onPress={cancelPressed} />
+            <Button
+              title="Reset"
+              onPress={() => {
+                resetInput();
+                //setText("");
+              }}
+            />
           </View>
         </View>
       </View>
