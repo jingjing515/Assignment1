@@ -1,25 +1,24 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-//import { Card } from "react-native-paper";
 
 export default function Card(props) {
-  return (
-    <View style={StyleSheet.card}>
-      <View style={StyleSheet.cardContent}>{props.childern}</View>
-    </View>
-  );
+  return <View style={StyleSheet.card}>{props.childern}</View>;
 }
 
 const Styles = StyleSheet.create({
   card: {
-    borderRadius: 6,
-    elevation: 3,
-    //alignContent: "center",
-    //margin: 37,
-    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: "dimgray",
+    backgroundColor: "cornsilk",
     shadowOffset: { width: 1, height: 1 },
     shadowColor: "#333",
+    shadowOpacity: 0.2,
     shadowRadius: 2,
+    elevation: 1,
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 10,
   },
   cardContent: {
     marginHorizontal: 18,

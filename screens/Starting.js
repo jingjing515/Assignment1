@@ -69,50 +69,52 @@ export default function Starting() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
-        <Text style={styles.title}>Email adress</Text>
-        <TextInput
-          value={email}
-          onChangeText={(email) => {
-            setEmail(email);
-          }}
-          style={styles.input}
-        />
-        {emailError}
+        <Card>
+          <Text style={styles.title}>Email adress</Text>
+          <TextInput
+            value={email}
+            onChangeText={(email) => {
+              setEmail(email);
+            }}
+            style={styles.input}
+          />
+          {emailError}
 
-        <Text style={styles.title}>Phone number</Text>
-        <TextInput
-          value={phone}
-          onChangeText={(phone) => {
-            setPhone(phone);
-          }}
-          style={styles.input}
-          maxLength={10}
-          keyboardType="numeric"
-        />
-        {phoneError}
+          <Text style={styles.title}>Phone number</Text>
+          <TextInput
+            value={phone}
+            onChangeText={(phone) => {
+              setPhone(phone);
+            }}
+            style={styles.input}
+            maxLength={10}
+            keyboardType="numeric"
+          />
+          {phoneError}
 
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button
-              title="Reset"
-              onPress={() => {
-                resetInput();
-                //setText("");
-              }}
-            />
+          <View style={styles.buttonContainer}>
+            <View style={styles.button}>
+              <Button
+                title="Reset"
+                onPress={() => {
+                  resetInput();
+                  //setText("");
+                }}
+              />
+            </View>
+            <View style={styles.button}>
+              <Button
+                title="Sign up"
+                onPress={() => {
+                  phoneInvalid(phone);
+                  emailInvalid(email);
+                  //sendChangedEmail(email);
+                  //sendChangedPhone(phone);
+                }}
+              />
+            </View>
           </View>
-          <View style={styles.button}>
-            <Button
-              title="Sign up"
-              onPress={() => {
-                phoneInvalid(phone);
-                emailInvalid(email);
-                //sendChangedEmail(email);
-                //sendChangedPhone(phone);
-              }}
-            />
-          </View>
-        </View>
+        </Card>
       </View>
     </SafeAreaView>
   );

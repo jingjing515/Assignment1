@@ -11,32 +11,9 @@ import { useState } from "react";
 import Card from "../components/Card";
 
 export default function Input() {
-  //{
-  //sendChangedEmail,
-  //sendChangedPhone,
-  //modalIsVisible,
-  //}
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   //
-
-  //
-  function changeEmail(changedEmail) {
-    setEmail(changedEmail);
-  }
-  function changePhone(changedPhone) {
-    setPhone(changedPhone);
-  }
-  function resetInput() {
-    setEmail("");
-    setPhone("");
-  }
-
-  function phoneInvalid(phone) {
-    if (phone.length != 10) {
-      alert("Please enter a valid phone number");
-    }
-  }
 
   return (
     <View style={styles.container}>
