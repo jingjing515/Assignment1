@@ -6,34 +6,54 @@ import {
   Modal,
   StyleSheet,
   Keyboard,
+  SafeAreaView,
 } from "react-native";
 import { useState } from "react";
 import Card from "../components/Card";
-import Input from "../components/Input";
+//import Input from "../components/Input";
 
-// Receive modalVisible in props
-export default function Starting({
-  sendChangedEmail,
-  sendChangedPhone,
-  modalIsVisible,
-}) {
+export default function Starting() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  //
+
+  /*
   function changeEmail(changedEmail) {
     setEmail(changedEmail);
   }
   function changePhone(changedPhone) {
     setPhone(changedPhone);
   }
+  */
   function resetInput() {
     setEmail("");
     setPhone("");
+    setEmailError("");
+    setPhoneError("");
   }
 
   function phoneInvalid(phone) {
-    if (phone.length != 10) {
-      alert("Please enter a valid phone number");
+    if (phone.length != 10 || isNaN(phone)) {
+      setPhoneError(
+        <Text style={styles.errorText}>Please enter a valid phone number</Text>
+      );
+      setPhone("");
+    } else {
+      setPhoneError("");
+    }
+  }
+
+  function emailInvalid(email) {
+    if (email.length == 0) {
+      setEmailError(
+        <Text style={styles.errorText}>Please enter a valid email address</Text>
+      );
+      setEmail("");
+    } else {
+      setEmailError("");
     }
   }
   /*function onEmailEntered(changedEmail) {
@@ -47,37 +67,31 @@ export default function Starting({
   // }
   */
   return (
-    // use the received prop in visible prop of Modal
-    <Modal visible={modalIsVisible}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.container}>
-        <Text style={styles.email}>Email adress</Text>
+        <Text style={styles.title}>Email adress</Text>
         <TextInput
           value={email}
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(email) => {
+            setEmail(email);
+          }}
           style={styles.input}
         />
+        {emailError}
 
-        <Text style={styles.email}>Phone number</Text>
+        <Text style={styles.title}>Phone number</Text>
         <TextInput
           value={phone}
-          onChangeText={(phone) => setPhone(phone)}
+          onChangeText={(phone) => {
+            setPhone(phone);
+          }}
           style={styles.input}
           maxLength={10}
           keyboardType="numeric"
         />
+        {phoneError}
 
         <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button
-              title="Sign up"
-              onPress={() => {
-                phoneInvalid(phone);
-                //sendChangedEmail(email);
-                //sendChangedPhone(phone);
-              }}
-            />
-          </View>
-
           <View style={styles.button}>
             <Button
               title="Reset"
@@ -87,9 +101,20 @@ export default function Starting({
               }}
             />
           </View>
+          <View style={styles.button}>
+            <Button
+              title="Sign up"
+              onPress={() => {
+                phoneInvalid(phone);
+                emailInvalid(email);
+                //sendChangedEmail(email);
+                //sendChangedPhone(phone);
+              }}
+            />
+          </View>
         </View>
       </View>
-    </Modal>
+    </SafeAreaView>
   );
 }
 
@@ -102,6 +127,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
+    color: "rebeccapurple",
     borderBottomColor: "rebeccapurple",
     borderBottomWidth: 2,
     width: "50%",
@@ -116,7 +142,13 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
   },
-  email: {
+  title: {
+    width: "50%",
+    marginVertical: 5,
+    color: "rebeccapurple",
+    fontSize: 25,
+  },
+  errorText: {
     width: "50%",
     marginVertical: 10,
   },
