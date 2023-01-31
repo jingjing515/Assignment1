@@ -7,33 +7,30 @@ export default function confirm({
   sendChangedEmail,
   sendChangedPhone,
   modalIsVisible,
+  goBack,
 }) {
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredPhone, setEnteredPhone] = useState("");
-
-  function onEmailEntered(changedEmail) {
-    setEnteredEmail(changedEmail);
-  }
-  function onPhoneEntered(changedPhone) {
-    setEnteredPhone(changedPhone);
-  }
-
   return (
     <View style={styles.container}>
-      <Card>
-        <Modal visible={modalIsVisible}>
-          <Text>You have entered:</Text>
-          <Text>{enteredEmail}</Text>
-          <Text>{enteredPhone}</Text>
+      <Modal visible={modalIsVisible}>
+        <Card>
+          <Text style={styles.message}>You have entered:</Text>
+          <Text style={styles.message}>{sendChangedEmail}</Text>
+          <Text style={styles.message}>{sendChangedPhone}</Text>
           <Text>Please confirm they are correct.</Text>
 
-          <Button title="Go back" />
-
-          <Button title="Confirm" />
-
-          <Button title="Finish later" />
-        </Modal>
-      </Card>
+          <View style={styles.button}>
+            <Button
+              style={styles.button}
+              title="Go back"
+              onPress={() => {
+                goBack();
+              }}
+            />
+            <Button title="Confirm" />
+            <Button title="Finish later" />
+          </View>
+        </Card>
+      </Modal>
     </View>
   );
 }
@@ -45,17 +42,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  title: {
+    width: "40%",
+    marginVertical: 10,
+    color: "rebeccapurple",
+    fontSize: 25,
+  },
   image: {
     height: 100,
     width: 100,
   },
-  input: {
+  message: {
     borderBottomColor: "rebeccapurple",
-    borderBottomWidth: 2,
+    //borderBottomWidth: 2,
     width: "50%",
     marginVertical: 10,
   },
-  button: { width: "30%", marginHorizontal: 5, color: "red" },
+  button: {
+    width: "30%",
+    marginHorizontal: 10,
+    marginVertical: 10,
+    color: "red",
+  },
   buttonContainer: {
     flexDirection: "row",
   },

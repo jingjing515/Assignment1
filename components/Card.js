@@ -8,7 +8,7 @@ export default function Card(props) {
 const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 30,
     borderColor: "dimgray",
     backgroundColor: "cornsilk",
     shadowOffset: { width: 5, height: 5 },

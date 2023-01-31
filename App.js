@@ -14,6 +14,9 @@ export default function App() {
     setPhone(data.enteredPhone);
     setModalVisible(true);
   }
+  function hideModal() {
+    setModalVisible(false);
+  }
 
   return (
     <View style={styles.container}>
@@ -22,8 +25,9 @@ export default function App() {
         sendChangedEmail={email}
         sendChangedPhone={phone}
         modalIsVisible={modalVisible}
+        goBack={hideModal}
       />
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
     </View>
   );
 }
