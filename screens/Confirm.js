@@ -1,6 +1,7 @@
-import { View, Text, Modal, StyleSheet } from "react-native";
+import { View, Text, Modal, StyleSheet, Button } from "react-native";
 import { useState } from "react";
 import React from "react";
+import Card from "../components/Card";
 
 export default function confirm({
   sendChangedEmail,
@@ -9,7 +10,6 @@ export default function confirm({
 }) {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPhone, setEnteredPhone] = useState("");
-  const [modalVisible, setModalVisible] = useState(false);
 
   function onEmailEntered(changedEmail) {
     setEnteredEmail(changedEmail);
@@ -17,6 +17,7 @@ export default function confirm({
   function onPhoneEntered(changedPhone) {
     setEnteredPhone(changedPhone);
   }
+
   return (
     <View style={styles.container}>
       <Card>
