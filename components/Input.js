@@ -8,34 +8,40 @@ import {
   Keyboard,
 } from "react-native";
 import { useState } from "react";
-import Card from "../components/Card";
+//import Card from "../components/Card";
 
 export default function Input() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  //
   //
 
   return (
     <View style={styles.container}>
-      <Text style={styles.email}>Email adress</Text>
+      <Text style={styles.title}>Email adress</Text>
       <TextInput
         value={email}
         onChangeText={(email) => {
           setEmail(email);
-          //------
-          //handleValidEmail(email);
         }}
         style={styles.input}
       />
+      {emailError}
 
-      <Text style={styles.email}>Phone number</Text>
+      <Text style={styles.title}>Phone number</Text>
       <TextInput
         value={phone}
-        onChangeText={(phone) => setPhone(phone)}
+        onChangeText={(phone) => {
+          setPhone(phone);
+        }}
         style={styles.input}
         maxLength={10}
         keyboardType="numeric"
       />
+      {phoneError}
     </View>
   );
 }

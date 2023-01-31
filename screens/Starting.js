@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import Card from "../components/Card";
-//import Input from "../components/Input";
+import Input from "../components/Input";
 
 export default function Starting() {
   const [email, setEmail] = useState("");
@@ -20,14 +20,6 @@ export default function Starting() {
   const [phoneError, setPhoneError] = useState("");
   //
 
-  /*
-  function changeEmail(changedEmail) {
-    setEmail(changedEmail);
-  }
-  function changePhone(changedPhone) {
-    setPhone(changedPhone);
-  }
-  */
   function resetInput() {
     setEmail("");
     setPhone("");
@@ -56,66 +48,65 @@ export default function Starting() {
       setEmailError("");
     }
   }
-  /*function onEmailEntered(changedEmail) {
-    setEnteredEmail(changedEmail);
-  }
-  function onPhoneEntered(changedPhone) {
-    setEnteredPhone(changedPhone);
-  }
-  // function buttonPressed() {
-  //   sendChangedText(text);
-  // }
-  */
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <Card>
-          <Text style={styles.title}>Email adress</Text>
-          <TextInput
-            value={email}
-            onChangeText={(email) => {
-              setEmail(email);
-            }}
-            style={styles.input}
-          />
-          {emailError}
+      {/* <View style={styles.container}> */}
+      <Card>
+        {/* <Input /> */}
 
-          <Text style={styles.title}>Phone number</Text>
-          <TextInput
-            value={phone}
-            onChangeText={(phone) => {
-              setPhone(phone);
-            }}
-            style={styles.input}
-            maxLength={10}
-            keyboardType="numeric"
-          />
-          {phoneError}
+        <Text style={styles.title}>Email adress</Text>
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={(email) => {
+            setEmail(email);
+          }}
+        />
+        {emailError}
 
-          <View style={styles.buttonContainer}>
-            <View style={styles.button}>
-              <Button
-                title="Reset"
-                onPress={() => {
-                  resetInput();
-                  //setText("");
-                }}
-              />
-            </View>
-            <View style={styles.button}>
-              <Button
-                title="Sign up"
-                onPress={() => {
-                  phoneInvalid(phone);
-                  emailInvalid(email);
-                  //sendChangedEmail(email);
-                  //sendChangedPhone(phone);
-                }}
-              />
-            </View>
+        <Text style={styles.title}>Phone number</Text>
+        <TextInput
+          style={styles.input}
+          value={phone}
+          onChangeText={(phone) => {
+            setPhone(phone);
+          }}
+          maxLength={10}
+          keyboardType="numeric"
+        />
+        {phoneError}
+
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button
+              title="Reset"
+              onPress={() => {
+                resetInput();
+                //setText("");
+              }}
+            />
           </View>
-        </Card>
-      </View>
+
+          <View style={styles.button}>
+            <Button
+              title="Sign up"
+              onPress={() => {
+                phoneInvalid(phone);
+                emailInvalid(email);
+                //sendChangedEmail(email);
+                //sendChangedPhone(phone);
+              }}
+            />
+          </View>
+        </View>
+        {/* <Confirm
+          sendChangedEmail={email}
+          sendChangedPhone={phone}
+          modalIsVisible={modalVisible}
+        /> */}
+      </Card>
+      {/* </View> */}
     </SafeAreaView>
   );
 }
@@ -123,7 +114,7 @@ export default function Starting() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#aaa",
+    //backgroundColor: "#aaa",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -132,12 +123,12 @@ const styles = StyleSheet.create({
     color: "rebeccapurple",
     borderBottomColor: "rebeccapurple",
     borderBottomWidth: 2,
-    width: "50%",
+    width: "40%",
     marginVertical: 10,
   },
   button: {
     width: "30%",
-    marginHorizontal: 5,
+    marginHorizontal: 10,
     marginVertical: 10,
     color: "red",
   },
@@ -145,8 +136,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   title: {
-    width: "50%",
-    marginVertical: 5,
+    width: "40%",
+    marginVertical: 10,
     color: "rebeccapurple",
     fontSize: 25,
   },

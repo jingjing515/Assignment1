@@ -19,18 +19,20 @@ export default function confirm({
   }
   return (
     <View style={styles.container}>
-      <Modal visible={modalIsVisible}>
-        <Text>You have entered:</Text>
-        <Text>{enteredEmail}</Text>
-        <Text>{enteredPhone}</Text>
-        <Text>Please confirm they are correct.</Text>
+      <Card>
+        <Modal visible={modalIsVisible}>
+          <Text>You have entered:</Text>
+          <Text>{enteredEmail}</Text>
+          <Text>{enteredPhone}</Text>
+          <Text>Please confirm they are correct.</Text>
 
-        <Button title="Go back" />
+          <Button title="Go back" />
 
-        <Button title="Confirm" />
+          <Button title="Confirm" />
 
-        <Button title="Finish later" />
-      </Modal>
+          <Button title="Finish later" />
+        </Modal>
+      </Card>
     </View>
   );
 }
