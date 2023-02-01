@@ -12,14 +12,15 @@ export default function confirm({
   finishLaterButton,
 }) {
   return (
-    <View style={styles.container}>
-      <Modal visible={modalIsVisible}>
+    // <View style={styles.container}>
+    <Modal visible={modalIsVisible}>
+      <View style={styles.container}>
         <Card>
           {/* <View style={styles.container}> */}
           <Text style={styles.message}>You have entered:</Text>
           <Text style={styles.message}>{sendChangedEmail}</Text>
           <Text style={styles.message}>{sendChangedPhone}</Text>
-          <Text>Please confirm they are correct.</Text>
+          <Text style={styles.message}>Please confirm they are correct.</Text>
 
           <View style={styles.button}>
             <Button
@@ -44,8 +45,9 @@ export default function confirm({
           </View>
           {/* </View> */}
         </Card>
-      </Modal>
-    </View>
+      </View>
+    </Modal>
+    /* </View> */
   );
 }
 
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
   message: {
     borderBottomColor: "rebeccapurple",
     //borderBottomWidth: 2,
-    width: "50%",
+    width: "100%",
     marginVertical: 10,
     paddingTop: 10,
     paddingLeft: 10,

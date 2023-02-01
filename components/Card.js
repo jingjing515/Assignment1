@@ -7,6 +7,8 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
   card: {
+    height: "70%",
+    width: "80%",
     borderWidth: 1,
     borderRadius: 30,
     borderColor: "dimgray",

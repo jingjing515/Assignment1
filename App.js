@@ -10,9 +10,9 @@ export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [confirmed, setConfirmed] = useState("false");
-  const [finishLater, setFinishLater] = useState("false");
-  const [finishVisible, setfinishVisible] = useState("false");
+  const [confirmed, setConfirmed] = useState(false);
+  const [finishLater, setFinishLater] = useState(false);
+  const [finishVisible, setfinishVisible] = useState(false);
   //but finish is not a modal...
 
   function onDataReceived(data) {
@@ -27,45 +27,57 @@ export default function App() {
   function isConfirmed() {
     // console.log("confirm work");
     setConfirmed(true);
+    hideModal();
   }
   function isFinishLater() {
     setFinishLater(true);
+    hideModal();
   }
   function isFinishVisible() {
     setfinishVisible(true);
   }
+  function resetInput() {
+    setConfirmed(false);
+    setFinishLater(false);
+    setEmail("");
+    setPhone("");
+  }
 
   return (
-    <SafeAreaView style={styles.container}>
+    // <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.container}>
-        {/* <LinearGradient
+      {/* <View style={styles.container}> */}
+      {/* <LinearGradient
           // Background Linear Gradient
           colors={["rgba(0,0,0,0.8)", "transparent"]}
           style={styles.container}
         /> */}
 
-        <Starting sendData={onDataReceived} />
-        <Confirm
-          sendChangedEmail={email}
-          sendChangedPhone={phone}
-          modalIsVisible={modalVisible}
-          goBackButton={hideModal}
-          confirmButton={isConfirmed}
-          finishLaterButton={isFinishLater}
+      <Confirm
+        sendChangedEmail={email}
+        sendChangedPhone={phone}
+        modalIsVisible={modalVisible}
+        goBackButton={hideModal}
+        confirmButton={isConfirmed}
+        finishLaterButton={isFinishLater}
+      />
+      {/* {setConfirmed === true || setFinishLater === true ? ( */}
+      {confirmed || finishLater ? (
+        <Finish
+          confirmPressed={confirmed}
+          finishLaterPressed={finishLater}
+          phoneNumber={phone}
+          finishIsVisible={finishVisible}
+          startAgainPressed={resetInput}
         />
-        {/* {setConfirmed === true || setFinishLater === true ? ( */}
-        {confirmed || finishLater ? (
-          <Finish
-            confirmPressed={confirmed}
-            finishLaterPressed={finishLater}
-            phoneNumber={phone}
-            finishIsVisible={finishVisible}
-          />
-        ) : // <Text>finish page</Text>
-        null}
-      </View>
-    </SafeAreaView>
+      ) : (
+        // <Text>finish page</Text>
+        <Starting sendData={onDataReceived} />
+      )}
+      {/* </View> */}
+      {/* </SafeAreaView> */}
+    </View>
   );
 }
 

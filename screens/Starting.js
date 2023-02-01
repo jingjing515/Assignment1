@@ -20,19 +20,21 @@ export default function Starting({ sendData }) {
 
   return (
     //<SafeAreaView style={styles.container}>
-    // <View style={styles.container}>
-    <Card>
-      <Input sendData={onDataEntered} />
-    </Card>
-    /* </View> */
+    <View style={styles.container}>
+      <Card>
+        <Input sendData={onDataEntered} />
+      </Card>
+    </View>
     //</SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "red",
+    height: "100%",
+    width: "100%",
+    // flex: 1,
+    backgroundColor: "#aaa",
     alignItems: "center",
     justifyContent: "center",
   },
