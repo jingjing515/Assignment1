@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
     color: "rebeccapurple",
     borderBottomColor: "rebeccapurple",
     borderBottomWidth: 2,
-    width: "40%",
-    marginVertical: 10,
+    width: "50%",
+    marginVertical: 1,
   },
   button: {
     width: "30%",
@@ -127,9 +127,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
+    marginTop: 10,
   },
   title: {
-    width: "40%",
+    width: "50%",
     marginVertical: 10,
     color: "rebeccapurple",
     fontSize: 25,

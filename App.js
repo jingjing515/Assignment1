@@ -12,7 +12,7 @@ export default function App() {
   const [phone, setPhone] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [finishLater, setFinishLater] = useState(false);
-  const [finishVisible, setfinishVisible] = useState(false);
+  // const [finishVisible, setfinishVisible] = useState(false);
   //but finish is not a modal...
 
   function onDataReceived(data) {
@@ -33,9 +33,9 @@ export default function App() {
     setFinishLater(true);
     hideModal();
   }
-  function isFinishVisible() {
-    setfinishVisible(true);
-  }
+  // function isFinishVisible() {
+  //   setfinishVisible(true);
+  // }
   function resetInput() {
     setConfirmed(false);
     setFinishLater(false);
@@ -68,7 +68,7 @@ export default function App() {
           confirmPressed={confirmed}
           finishLaterPressed={finishLater}
           phoneNumber={phone}
-          finishIsVisible={finishVisible}
+          // finishIsVisible={finishVisible}
           startAgainPressed={resetInput}
         />
       ) : (

@@ -9,13 +9,14 @@ export default function finish({
   phoneNumber,
   startAgainPressed,
 }) {
-  console.log(confirmPressed + "inside finish");
+  // console.log(confirmPressed + "inside finish");
 
   return (
     <View style={styles.container}>
       <Card>
         {confirmPressed && (
           <>
+            {/* <View style={styles.container}> */}
             <Text style={styles.message}>
               Thank you for signing up. Here's a picture for you, based on the
               last digit of your phone number.
@@ -28,15 +29,21 @@ export default function finish({
                 }/100/100`,
               }}
             />
+            {/* </View> */}
           </>
         )}
         {finishLaterPressed && (
           <>
-            <Text style={styles.message}>Sorry to see you go</Text>
-            <Image style={styles.image} source={require("../assets/sad.png")} />
+            <Text style={styles.message}>Sorry to see you go.</Text>
+            {/* <View style={styles.image}> */}
+            <Image
+              style={styles.image}
+              source={require("../assets/sad1.png")}
+            />
+            {/* </View> */}
           </>
         )}
-        <View style={styles.button}>
+        <View style={styles.buttonContainer}>
           <Button
             title="Start again"
             onPress={() => {
@@ -51,9 +58,9 @@ export default function finish({
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     height: "100%",
     width: "100%",
+    // flex: 1,
     backgroundColor: "#aaa",
     alignItems: "center",
     justifyContent: "center",
@@ -64,10 +71,10 @@ const styles = StyleSheet.create({
     width: 100,
     alignItems: "center",
     justifyContent: "center",
+    paddingLeft: 100,
   },
   message: {
-    borderBottomColor: "rebeccapurple",
-    //borderBottomWidth: 2,
+    color: "rebeccapurple",
     width: "100%",
     marginVertical: 10,
     paddingTop: 10,
@@ -80,6 +87,7 @@ const styles = StyleSheet.create({
     color: "red",
   },
   buttonContainer: {
-    flexDirection: "row",
+    flexDirection: "column",
+    marginTop: 10,
   },
 });

@@ -22,9 +22,9 @@ export default function confirm({
           <Text style={styles.message}>{sendChangedPhone}</Text>
           <Text style={styles.message}>Please confirm they are correct.</Text>
 
-          <View style={styles.button}>
+          <View style={styles.buttonContainer}>
             <Button
-              style={styles.button}
+              // style={styles.button}
               title="Go back"
               onPress={() => {
                 goBackButton();
@@ -53,7 +53,9 @@ export default function confirm({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "100%",
+    width: "100%",
+    // flex: 1,
     backgroundColor: "#aaa",
     alignItems: "center",
     justifyContent: "center",
@@ -69,10 +71,9 @@ const styles = StyleSheet.create({
     width: 100,
   },
   message: {
-    borderBottomColor: "rebeccapurple",
-    //borderBottomWidth: 2,
+    color: "rebeccapurple",
     width: "100%",
-    marginVertical: 10,
+    marginVertical: 1,
     paddingTop: 10,
     paddingLeft: 10,
   },
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
     color: "red",
   },
   buttonContainer: {
-    flexDirection: "row",
+    flexDirection: "column",
+    marginTop: 10,
   },
 });

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     width: "80%",
     borderWidth: 1,
     borderRadius: 30,
-    borderColor: "dimgray",
+    borderColor: "cornsilk",
     backgroundColor: "cornsilk",
     shadowOffset: { width: 5, height: 5 },
     shadowColor: "black",
