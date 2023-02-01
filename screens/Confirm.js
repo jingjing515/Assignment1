@@ -7,12 +7,15 @@ export default function confirm({
   sendChangedEmail,
   sendChangedPhone,
   modalIsVisible,
-  goBack,
+  goBackButton,
+  confirmButton,
+  finishLaterButton,
 }) {
   return (
     <View style={styles.container}>
       <Modal visible={modalIsVisible}>
         <Card>
+          {/* <View style={styles.container}> */}
           <Text style={styles.message}>You have entered:</Text>
           <Text style={styles.message}>{sendChangedEmail}</Text>
           <Text style={styles.message}>{sendChangedPhone}</Text>
@@ -23,12 +26,23 @@ export default function confirm({
               style={styles.button}
               title="Go back"
               onPress={() => {
-                goBack();
+                goBackButton();
               }}
             />
-            <Button title="Confirm" />
-            <Button title="Finish later" />
+            <Button
+              title="Confirm"
+              onPress={() => {
+                confirmButton();
+              }}
+            />
+            <Button
+              title="Finish later"
+              onPress={() => {
+                finishLaterButton();
+              }}
+            />
           </View>
+          {/* </View> */}
         </Card>
       </Modal>
     </View>
@@ -57,6 +71,8 @@ const styles = StyleSheet.create({
     //borderBottomWidth: 2,
     width: "50%",
     marginVertical: 10,
+    paddingTop: 10,
+    paddingLeft: 10,
   },
   button: {
     width: "30%",
