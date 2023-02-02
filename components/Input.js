@@ -8,7 +8,7 @@ import {
   Keyboard,
 } from "react-native";
 import { useState } from "react";
-//import Card from "../components/Card";
+import { inputStyles } from "./Styles";
 
 export default function Input({ sendData }) {
   const [email, setEmail] = useState("");
@@ -26,7 +26,9 @@ export default function Input({ sendData }) {
     console.log(phone);
     if (phone.length != 10 || isNaN(phone)) {
       setPhoneError(
-        <Text style={styles.errorText}>Please enter a valid phone number</Text>
+        <Text style={inputStyles.errorText}>
+          Please enter a valid phone number
+        </Text>
       );
       setPhone("");
       return false;
@@ -40,7 +42,9 @@ export default function Input({ sendData }) {
     console.log(email);
     if (email.length == 0 || !email.includes("@") || !email.includes(".")) {
       setEmailError(
-        <Text style={styles.errorText}>Please enter a valid email address</Text>
+        <Text style={inputStyles.errorText}>
+          Please enter a valid email address
+        </Text>
       );
       setEmail("");
       return false;
@@ -51,20 +55,20 @@ export default function Input({ sendData }) {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Email adress</Text>
+    <View style={inputStyles.container}>
+      <Text style={inputStyles.title}>Email adress</Text>
       <TextInput
         value={email}
         onChangeText={(email) => {
           setEmail(email);
         }}
-        style={styles.input}
+        style={inputStyles.input}
       />
       {emailError}
 
-      <Text style={styles.title}>Phone number</Text>
+      <Text style={inputStyles.title}>Phone number</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyles.input}
         value={phone}
         onChangeText={(phone) => {
           setPhone(phone);
@@ -74,8 +78,8 @@ export default function Input({ sendData }) {
       />
       {phoneError}
 
-      <View style={styles.buttonContainer}>
-        <View style={styles.button}>
+      <View style={inputStyles.buttonContainer}>
+        <View style={inputStyles.button}>
           <Button
             title="Reset"
             onPress={() => {
@@ -85,7 +89,7 @@ export default function Input({ sendData }) {
           />
         </View>
 
-        <View style={styles.button}>
+        <View style={inputStyles.button}>
           <Button
             title="Sign up"
             onPress={() => {
@@ -94,8 +98,6 @@ export default function Input({ sendData }) {
               if (phoneValid && emailValid) {
                 sendData({ enteredEmail: email, enteredPhone: phone });
               }
-              //sendChangedEmail(email);
-              //sendChangedPhone(phone);
             }}
           />
         </View>
@@ -103,40 +105,3 @@ export default function Input({ sendData }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    //backgroundColor: "#aaa",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  input: {
-    color: "rebeccapurple",
-    borderBottomColor: "rebeccapurple",
-    borderBottomWidth: 2,
-    width: "50%",
-    marginVertical: 1,
-  },
-  button: {
-    width: "30%",
-    marginHorizontal: 10,
-    marginVertical: 10,
-    color: "red",
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    marginTop: 10,
-  },
-  title: {
-    width: "50%",
-    marginVertical: 10,
-    color: "rebeccapurple",
-    fontSize: 25,
-  },
-  errorText: {
-    width: "50%",
-    marginVertical: 10,
-  },
-});

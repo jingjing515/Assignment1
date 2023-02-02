@@ -2,6 +2,8 @@ import { View, Text, Modal, StyleSheet, Button } from "react-native";
 import { useState } from "react";
 import React from "react";
 import Card from "../components/Card";
+import { styles } from "../components/Styles";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function confirm({
   sendChangedEmail,
@@ -14,7 +16,11 @@ export default function confirm({
   return (
     // <View style={styles.container}>
     <Modal visible={modalIsVisible}>
-      <View style={styles.container}>
+      {/* <View style={styles.container}> */}
+      <LinearGradient
+        colors={[styles.colorOne, styles.colorTwo]}
+        style={styles.container}
+      >
         <Card>
           {/* <View style={styles.container}> */}
           <Text style={styles.message}>You have entered:</Text>
@@ -22,7 +28,7 @@ export default function confirm({
           <Text style={styles.message}>{sendChangedPhone}</Text>
           <Text style={styles.message}>Please confirm they are correct.</Text>
 
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonContainer2}>
             <Button
               // style={styles.button}
               title="Go back"
@@ -45,46 +51,9 @@ export default function confirm({
           </View>
           {/* </View> */}
         </Card>
-      </View>
+        {/* </View> */}
+      </LinearGradient>
     </Modal>
     /* </View> */
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    width: "100%",
-    // flex: 1,
-    backgroundColor: "#aaa",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    width: "40%",
-    marginVertical: 10,
-    color: "rebeccapurple",
-    fontSize: 25,
-  },
-  image: {
-    height: 100,
-    width: 100,
-  },
-  message: {
-    color: "rebeccapurple",
-    width: "100%",
-    marginVertical: 1,
-    paddingTop: 10,
-    paddingLeft: 10,
-  },
-  button: {
-    width: "30%",
-    marginHorizontal: 10,
-    marginVertical: 10,
-    color: "red",
-  },
-  buttonContainer: {
-    flexDirection: "column",
-    marginTop: 10,
-  },
-});

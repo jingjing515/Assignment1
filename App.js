@@ -1,10 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Starting from "./screens/Starting";
 import Confirm from "./screens/Confirm";
 import { useState } from "react";
 import Finish from "./screens/Finish";
-// import { LinearGradient } from "expo-linear-gradient";
+import { styles } from "./components/Styles";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -12,8 +12,6 @@ export default function App() {
   const [phone, setPhone] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [finishLater, setFinishLater] = useState(false);
-  // const [finishVisible, setfinishVisible] = useState(false);
-  //but finish is not a modal...
 
   function onDataReceived(data) {
     setEmail(data.enteredEmail);
@@ -21,11 +19,9 @@ export default function App() {
     setModalVisible(true);
   }
   function hideModal() {
-    // console.log("hideModal works");
     setModalVisible(false);
   }
   function isConfirmed() {
-    // console.log("confirm work");
     setConfirmed(true);
     hideModal();
   }
@@ -33,9 +29,7 @@ export default function App() {
     setFinishLater(true);
     hideModal();
   }
-  // function isFinishVisible() {
-  //   setfinishVisible(true);
-  // }
+
   function resetInput() {
     setConfirmed(false);
     setFinishLater(false);
@@ -45,15 +39,12 @@ export default function App() {
 
   return (
     // <SafeAreaView style={styles.container}>
-    <View style={styles.container}>
+    // <View style={styles.container}>
+    <LinearGradient
+      colors={[styles.colorOne, styles.colorTwo]}
+      style={styles.container}
+    >
       <StatusBar style="auto" />
-      {/* <View style={styles.container}> */}
-      {/* <LinearGradient
-          // Background Linear Gradient
-          colors={["rgba(0,0,0,0.8)", "transparent"]}
-          style={styles.container}
-        /> */}
-
       <Confirm
         sendChangedEmail={email}
         sendChangedPhone={phone}
@@ -62,30 +53,18 @@ export default function App() {
         confirmButton={isConfirmed}
         finishLaterButton={isFinishLater}
       />
-      {/* {setConfirmed === true || setFinishLater === true ? ( */}
       {confirmed || finishLater ? (
         <Finish
           confirmPressed={confirmed}
           finishLaterPressed={finishLater}
           phoneNumber={phone}
-          // finishIsVisible={finishVisible}
           startAgainPressed={resetInput}
         />
       ) : (
-        // <Text>finish page</Text>
         <Starting sendData={onDataReceived} />
       )}
       {/* </View> */}
       {/* </SafeAreaView> */}
-    </View>
+    </LinearGradient>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

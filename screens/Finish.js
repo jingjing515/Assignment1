@@ -2,6 +2,8 @@ import { View, Text, Modal, StyleSheet, Button, Image } from "react-native";
 import { useState } from "react";
 import React from "react";
 import Card from "../components/Card";
+import { styles } from "../components/Styles";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function finish({
   confirmPressed,
@@ -9,10 +11,12 @@ export default function finish({
   phoneNumber,
   startAgainPressed,
 }) {
-  // console.log(confirmPressed + "inside finish");
-
   return (
-    <View style={styles.container}>
+    // <View style={styles.container}>
+    <LinearGradient
+      colors={[styles.colorOne, styles.colorTwo]}
+      style={styles.container}
+    >
       <Card>
         {confirmPressed && (
           <>
@@ -43,7 +47,7 @@ export default function finish({
             {/* </View> */}
           </>
         )}
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainer2}>
           <Button
             title="Start again"
             onPress={() => {
@@ -52,42 +56,7 @@ export default function finish({
           />
         </View>
       </Card>
-    </View>
+      {/* </View> */}
+    </LinearGradient>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    width: "100%",
-    // flex: 1,
-    backgroundColor: "#aaa",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  image: {
-    height: 100,
-    width: 100,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingLeft: 100,
-  },
-  message: {
-    color: "rebeccapurple",
-    width: "100%",
-    marginVertical: 10,
-    paddingTop: 10,
-    paddingLeft: 10,
-  },
-  button: {
-    width: "30%",
-    marginHorizontal: 10,
-    marginVertical: 10,
-    color: "red",
-  },
-  buttonContainer: {
-    flexDirection: "column",
-    marginTop: 10,
-  },
-});
